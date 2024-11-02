@@ -58,6 +58,31 @@ Følgende tekniske metrikker vil brukes for å måle ytelsen til systemet og sik
   * **Definisjon:** Antall brukersesjoner eller prisestimater systemet kan håndtere per tidsenhet, for eksempel per minutt.
   * **Formål:** Måle systemets kapasitet til å håndtere flere brukere samtidig uten ytelsesproblemer.
   * **Sammenheng med business objective:** Høy throughput støtter systemtilgjengelighet og stabil ytelse, som bidrar til en oppetid på minst 99 %, noe som sikrer brukertilgang og tillit til tjenesten.
+ 
+### Stakeholders
+Prosjektet involverer flere viktige stakeholders:
+* **Kunder/brukere:** Privatpersoner og profesjonelle som bruker tjenesten for å få estimater og prognoser for boliger. Forventningene er en enkel, nøyaktig tjeneste uten krav om sensitive opplysninger.
+* **Eiendomsmeglere:** Profesjonelle brukere som ønsker et verktøy for mer nøyaktige vurderinger og rådgivning til kundene sine. De forventer at tjenesten gir en konkurransefordel i markedet.
+
+### Tentativ Tidslinje med Milepæler
+Prosjektet følger en komprimert tidslinje med følgende milepæler:
+* **Milepæl 1: Prosjektoppstart og datainnsamling**
+  * Definere mål, rollefordeling og samle inn nødvendige data om boligpriser og markedstrender.
+* **Milepæl 2: Modellutvikling**
+  * Utvikle en grunnmodell for boligprisestimering basert på tilgjengelig data og sikre modellens nøyaktighet.
+* **Milepæl 3: Nettsideutvikling og integrasjon**
+  * Bygge en enkel nettside for innsamling av boligdata fra brukerne og integrere modellen for generering av estimater.
+* **Milepæl 4: Testing, rapportskriving og overlevering**
+  * Utføre testing, dokumentere resultater og levere prosjektet med rapport på Canvas.
+
+### Ressurser
+* **Personell:**
+  * **Utvikler:** Samler data og utvikler modellen for boligprisestimering.
+* **Beregningsressurser:**
+  * **Kraftig laptop eller arbeidsstasjon:** Til lokal utvikling og testing.
+  * **Skyplattform for maskinlæring:** Til modellkjøring hvis databehandlingen krever ekstra ressurser.
+* **Dataressurser:**
+  * **Bolig- og markedsdata:** Historiske data om boligpriser og trender for modelltrening og nøyaktige estimater.
 
 ## DATA
 > *Beskriv hvilke data og labels som skal brukes. Hva slags type data er dette? Hvor får du tak i data / hvordan kan data samles inn? Hvor mye data er tilgjengelig nå og hvor mye data estimerer du at behøves? Hvis problemet skal håndteres med `supervised learning`-metoder, beskriv hvordan du skal få tak i labels. Hvordan sikre at labels er tilstrekkelig konsistente?* 
