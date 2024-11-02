@@ -2,24 +2,62 @@
 
 https://www.kaggle.com/datasets/aravinii/house-price-prediction-treated-dataset?resource=download
 
-# [Prisestimering på hus] 
-
-> *Malen inneholder en del beskrivende tekst om hva dere kan skrive om under hver overskrift. Dette er kun forslag til elementer: dropp det som ikke er relevant i ditt tilfelle, og legg til element du finner relevant. Det eneste kravet er at beskrivelsen er i tråd med livssyklusen til maskinlæringsprosjekt skissert i kurset. Det vil si, at prosjektbeskrivelsen følger strukturen reflektert i overskriftene nedenfor. Slett alle instruksjoner (tekst i kursiv) før innlevering.*
+# Prosjektrapport: Boligprisestimering og Prisprognoser
 
 
 ## BESKRIV PROBLEMET
-### SCOPE
-* *`Business objective`: Beskriv prosjektets mål og `business impact`.*
-* *Hvordan skal løsningen produsert i prosjektet brukes? Hvilke tilsvarende løsninger finnes i dag / hvordan løses problemet i dag? Hvordan ville du utført / utføres oppgaven manuelt, uten maskinlæring?*
-* *Hvordan skal ytelsen måles via `business metrics`?*
-* *Hvis din maskinlæringsmodell skal være del av en større `pipeline` eller system, beskriv komponentene i dette. Vurder hvordan endringer i én del av systemet vil kunne påvirke andre.*
-* *Beskriv stakeholders i prosjektet.*
-* *Beskriv en tentativ tidslinje for prosjektet med milepæler*
-* *Definer hvilke ressurser, for eksempel beregningsressurser og personell, som behøves for å gjennomføre prosjektet.* 
+### Introduksjon
+Formålet med dette prosjektet er å utvikle en tjeneste for boligprisestimering og predikering av fremtidige boligpriser. Tjenesten skal gi brukere et pålitelig estimat for dagens boligverdi og en prognose for fremtidig prisutvikling uten krav om innlogging eller deling av sensitive opplysninger. Prosjektet retter seg mot privatpersoner som søker informasjon om boligverdi og profesjonelle aktører som eiendomsmeglere og investorer som ønsker å ta mer informerte beslutninger.
 
-### METRIKKER
-* *Beskriv minimum `business metric`-ytelse for at prosjektet skal være en suksess.*
-* *Beskriv maskinlærings- og software-metrikker eller mål som skal brukes til å måle hvorvidt systemet/løsningen fungerer. Her bør du bruke metrikker som enkelt kan regnes ut. Treffsikkerhet (accuracy), kvadratisk avvik (`mean squared error`), latency, throughput, etc. Forklar hvordan disse henger sammen med `business objective` skissert over.*
+### Business Objectives
+Tjenesten er designet for å møte flere spesifikke forretningsmål:
+* **Bedre investeringsbeslutninger:** Ved hjelp av prisestimering og prognoser kan eiendomsutviklere og investorer identifisere eiendommer og områder med høy avkastning, noe som gjør investeringsbeslutningene mer datadrevne og målrettede.
+* **Forbedre prissettingsstrategi:** Tjenesten gir grunnlag for realistisk og konkurransedyktig prising av boliger, noe som gir eiendomsmeglere og boligselgere mulighet til å fastsette priser i tråd med markedsforholdene.
+* **Identifisere lønnsomme utviklingsområder:** Prisprognoser gir boligutviklere innsikt i hvor etterspørselen sannsynligvis vil øke, noe som bidrar til strategisk plassering og lønnsomhet i nye boligprosjekter.
+
+### Business Impact
+Tjenesten har en betydelig forretningsmessig påvirkning:
+* **Bedre beslutningsgrunnlag for investorer:** Estimering av nåværende og fremtidig verdi gir eiendomsutviklere og investorer et pålitelig verktøy for vurdering av avkastningspotensialet i ulike områder.
+* **Forbedret prissetting for meglere og selgere:** Nøyaktige prisestimater gir et solid grunnlag for realistisk prising, som igjen bidrar til raskere salg og konkurransedyktig markedsposisjon.
+* **Støtte til boligutviklere:** Prediksjon av boligpriser gir verdifull innsikt i forventet etterspørsel, som hjelper til med planlegging og optimal ressursbruk i nye prosjekter.
+
+### Sammenligning med tilsvarende Løsninger
+Tilsvarende løsninger krever ofte innlogging med BankID og tilgang til personlige opplysninger, noe som kan virke unødvendig omfattende for brukere som kun ønsker et enkelt estimat og en prisprognose. Vår tjeneste gir brukerne den samme innsikten uten kompliserte krav, noe som gjør løsningen mer brukervennlig og tilgjengelig.
+
+### Manuell Metode for Prisestimering
+Uten maskinlæring ville en prisestimering måtte utføres manuelt på følgende måte:
+* **Enkel input:** Brukeren fyller inn informasjon om boligen, som adresse, størrelse, og antall rom.
+* **Resultatvisning:**
+  * **Estimert boligpris:** Viser et estimat av boligens nåverdi.
+  * **Prisprognose:** Viser en graf over forventet prisutvikling.
+  * **Tilleggsinformasjon:** Viser gjennomsnittspriser i området og faktorer som påvirker prisene.
+Denne manuelle prosessen er tidkrevende og mindre nøyaktig enn en automatisert maskinlæringsmodell.
+
+### Business Metrics for Ytelsesmåling
+For å vurdere om systemet oppnår forretningsmålene, skal følgende business metrics følges:
+* **Nøyaktighet på prisestimat:** Estimatene bør være innenfor ±10 % av faktiske salgspriser i minst 80 % av tilfellene. Dette sikrer at modellen gir pålitelige resultater for brukerne.
+* **Brukertilfredshet:** Brukere bør vurdere tjenesten med minst 4 av 5 stjerner i tilbakemeldinger, som indikerer at tjenesten oppleves som nyttig og brukervennlig.
+* **Fullført brukersesjon:** Minst 70 % av brukerne som starter en prisvurdering, bør fullføre hele prosessen. Dette viser at nettsiden og estimeringsfunksjonaliteten er intuitiv og engasjerende.
+* **Systemtilgjengelighet:** Nettsiden og estimeringstjenesten bør ha en oppetid på minst 99 % for å sikre pålitelig tilgang for brukerne.
+
+### Maskinlærings- og Software-Metrikker
+Følgende tekniske metrikker vil brukes for å måle ytelsen til systemet og sikre at løsningene fungerer effektivt:
+* **Treffsikkerhet (Accuracy):**
+  * **Definisjon:** Andelen av prisestimater som faller innenfor et definert område rundt faktiske salgspriser, for eksempel ±10 % av virkelig verdi.
+  * **Formål:** Måle modellens evne til å gi brukerne nøyaktige prisestimater.
+  * **Sammenheng med business objective:** Høy treffsikkerhet bidrar til brukertilfredshet og tillit til tjenesten, noe som er avgjørende for å oppnå minst 4 av 5 stjerner i brukervurderinger.
+* **Kvadratisk avvik (Mean Squared Error, MSE):**
+  * **Definisjon:** Gjennomsnittet av kvadratet av feilene mellom predikert og faktisk boligpris.
+  * **Formål:** Gi et presist mål på hvor mye estimatene i gjennomsnitt avviker fra sanne verdier, som hjelper med å minimere feil.
+  * **Sammenheng med business objective:** Lav MSE sikrer høy nøyaktighet, noe som øker brukertilfredshet og pålitelighet for tjenesten.
+* **Latency (Forsinkelse):**
+  * **Definisjon:** Tiden det tar for systemet å returnere et prisestimat etter at brukeren har sendt inn informasjon.
+  * **Formål:** Måler systemets responsivitet, noe som påvirker brukeropplevelsen.
+  * **Sammenheng med business objective:** Lav latency støtter høy fullføringsrate i brukersesjonene, ettersom brukere får raske svar og fullfører prosessen, noe som bidrar til målsettingen om minst 70 % fullføringsrate.
+* **Throughput (Gjennomstrømming):**
+  * **Definisjon:** Antall brukersesjoner eller prisestimater systemet kan håndtere per tidsenhet, for eksempel per minutt.
+  * **Formål:** Måle systemets kapasitet til å håndtere flere brukere samtidig uten ytelsesproblemer.
+  * **Sammenheng med business objective:** Høy throughput støtter systemtilgjengelighet og stabil ytelse, som bidrar til en oppetid på minst 99 %, noe som sikrer brukertilgang og tillit til tjenesten.
 
 ## DATA
 > *Beskriv hvilke data og labels som skal brukes. Hva slags type data er dette? Hvor får du tak i data / hvordan kan data samles inn? Hvor mye data er tilgjengelig nå og hvor mye data estimerer du at behøves? Hvis problemet skal håndteres med `supervised learning`-metoder, beskriv hvordan du skal få tak i labels. Hvordan sikre at labels er tilstrekkelig konsistente?* 
