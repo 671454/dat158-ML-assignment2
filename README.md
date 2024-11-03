@@ -1,11 +1,9 @@
-*[Ole Martin & Rudi Nathaniel] [Dato]*
+*[Ole Martin & Rudi Nathaniel] [03.11.2024]*
 
 https://www.kaggle.com/datasets/aravinii/house-price-prediction-treated-dataset?resource=download
 
 # Prosjektrapport: Boligprisestimering og Prisprognoser
 
-
-## BESKRIV PROBLEMET
 ### Introduksjon
 Formålet med dette prosjektet er å utvikle en tjeneste for boligprisestimering og predikering av fremtidige boligpriser. Tjenesten skal gi brukere et pålitelig estimat for dagens boligverdi og en prognose for fremtidig prisutvikling uten krav om innlogging eller deling av sensitive opplysninger. Prosjektet retter seg mot privatpersoner som søker informasjon om boligverdi og profesjonelle aktører som eiendomsmeglere og investorer som ønsker å ta mer informerte beslutninger.
 
@@ -84,18 +82,17 @@ Prosjektet følger en komprimert tidslinje med følgende milepæler:
 * **Dataressurser:**
   * **Bolig- og markedsdata:** Historiske data om boligpriser og trender for modelltrening og nøyaktige estimater.
 
-## DATA
-> *Beskriv hvilke data og labels som skal brukes. Hva slags type data er dette? Hvor får du tak i data / hvordan kan data samles inn? Hvor mye data er tilgjengelig nå og hvor mye data estimerer du at behøves? Hvis problemet skal håndteres med `supervised learning`-metoder, beskriv hvordan du skal få tak i labels. Hvordan sikre at labels er tilstrekkelig konsistente?* 
+### Data
+Prosjektet baserer seg på et treningssett og et testsett som inneholder de mest nødvendige variablene for nøyaktige boligprisestimater. Det er ingen planer om å oppdatere datasettene regelmessig, da prosjektets behov anses som dekket med de opprinnelige dataene. Ytterligere datakilder, som Matrikkelen og Grunnboken, kunne økt påliteligheten, men er utelatt for å forenkle prosjektet og unngå personvernproblematikk.
+For å sikre konsistens i dataene, kan kryssvalidering med alternative kilder brukes. Prosjektet samler ikke inn personopplysninger, og det anses derfor å oppfylle personvernhensyn. For å forbedre modellens ytelse, vurderes tillegg som min-max-skalering for numeriske variabler og beregning av pris per kvadratmeter for å fange opp verdiforskjeller.
 
-> *Beskriv eventuelle personvernhensyn eller andre relevante etiske betraktninger.* 
+### Modellering
+Random Forest Regressor er valgt som hovedmodell for boligprisestimering grunnet god ytelse og tolkningsmuligheter med minimal parameterjustering. Alternativt vurderes Gradient Boosting og XGBoost, som begge kan bidra med spesifikke fordeler: Gradient Boosting er effektivt og enkel å implementere, mens XGBoost gir høyere nøyaktighet, men krever mer tuning.
+Modellen evalueres ved hjelp av MAE, MSE, RMSE og R². For at modellen skal anses som klar for produksjon, bør MAE være innenfor 10 % av gjennomsnittlig boligpris, og R² bør være 0,80 eller høyere. Feature importance analyseres med Random Forest og eventuelt XGBoost for å identifisere hvilke variabler som har størst innvirkning på prediksjonene.
 
-> *Hvordan skal data representeres for maskinlæringsmodellene? Beskriv eventuelle behov for rensing av data, feature engineering og skalering.* 
+### Deployment
+Distribusjonen av modellen vil gjøres gjennom Gradio, som gir en enkel brukergrensesnittløsning for boligprisestimater. For å sikre en brukervennlig opplevelse, settes et mål om å holde responstiden under fem minutter, slik at brukerne raskt får prediksjonene sine.
+Modellen vil være åpen og tilgjengelig uten tilgangsbegrensninger, og ingen prediksjonsdata lagres, noe som forenkler sikkerhetskrav og personvern. Den minimale overvåkningen som kreves betyr også at det ikke er behov for retrening eller regelmessig vedlikehold av modellen.
 
-## MODELLERING
-> *Beskriv hvilken eller hvilke maskinlæringsmodeller du skal utforske. Beskriv hvordan du planlegger å estimere baseline-ytelse og baseline-oppførsel. Husk at dine første modeller bør være enkle. Basline-ytelse kan avdekkes via modeller eller enkle ikke-maskinlæringsbaserte løsninger, ved å lete etter resultater oppnådd av andre på samme oppgave, eller ved å estimere `human level performance` der det er relevant. Beskriv hvordan du skal undersøke feil-prediksjoner og `feature importance`, og hvordan dette skal brukes til å forbedre modellene.*
-
-## DEPLOYMENT
-> *Hvordan skal modellen(e) settes i drift? Hvordan skal prediksjonene brukes? Hva er dine planer for monitorering og vedlikehold av maskinlæringssystemet? Hvis relevant, hvilke planer har du for å forbedre systemet etter at det er satt i drift?*
-
-## REFERANSER
-> *List opp kilder du har brukt til å utarbeide prosjektbeskrivelsen. Listen av referanser bør sannsynliggjøre at prosjektet kan lykkes (`feasability`)*
+### Referanser
+Dataene er hentet fra GitHub, og verktøy som Google Colab, Kaggle, ChatGPT og Google Drive har vært nyttige i datahåndtering og utvikling. Valg av Random Forest-modellen er basert på pensum i faget, da den gir et pålitelig verktøy for prediksjon av boligpriser i denne akademiske konteksten. Juridiske krav som GDPR er ikke relevante, ettersom ingen personopplysninger håndteres i prosjektet.
